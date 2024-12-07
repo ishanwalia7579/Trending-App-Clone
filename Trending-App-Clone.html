@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending App Clone</title>
+    <style>
+        /* style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.app-container {
+    max-width: 100%; /* Make it fit the phone screen */
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0; /* No rounded corners for full screen */
+    overflow: hidden;
+    height: 100vh; /* Fit viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
+.app-header {
+    background-color: #6200ea;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Trending Feed */
+.trending-feed {
+    padding: 10px;
+    overflow-y: scroll; /* Enable scrolling for feed */
+    flex: 1; /* Allow feed to take remaining space */
+}
+
+.trend-card {
+    background: #fff;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+}
+
+.trend-card img {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    height: auto; /* Ensure proper scaling */
+}
+
+.trend-card h2 {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.trend-card p {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.actions button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.like-btn {
+    background-color: #00c853;
+    color: white;
+}
+
+.follow-btn {
+    background-color: #03a9f4;
+    color: white;
+}
+
+.like-btn:hover {
+    background-color: #00a743;
+}
+
+.follow-btn:hover {
+    background-color: #0288d1;
+}
+
+/* Responsive Design for Phones */
+@media (max-width: 768px) {
+    .trend-card {
+        margin-bottom: 10px;
+    }
+
+    .trend-card h2 {
+        font-size: 1em;
+    }
+
+    .trend-card p {
+        font-size: 0.8em;
+    }
+
+    .actions button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .app-header {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Trending App</h1>
+        </header>
+
+        <!-- Trending Feed -->
+        <section class="trending-feed">
+            <div class="trend-card">
+                <img src="ISHAN2.jpg" alt="Trend Image">
+                <h2>#TrendingTopic1</h2>
+                <p>Description of the trending topic goes here.</p>
+                <div class="actions">
+                    <button class="like-btn">👍 Like</button>
+                    <button class="follow-btn">⭐ Follow</button>
+                </div>
+            </div>
+            <section class="trending-feed">
+                <div class="trend-card">
+                    <img src="ISHAN1.jpg" alt="Trend Image">
+                    <h2>#TrendingTopic1</h2>
+                    <p>Description of the trending topic goes here.</p>
+                    <div class="actions">
+                        <button class="like-btn">👍 Like</button>
+                        <button class="follow-btn">⭐ Follow</button>
+                    </div>
+                </div>
+            <div class="trend-card">
+                <img src="ISHAN3.jpg" alt="Trend Image">
+                <h2>#TrendingTopic2</h2>
+                <p>Description of the trending topic goes here.</p>
+                <div class="actions">
+                    <button class="like-btn">👍 Like</button>
+                    <button class="follow-btn">⭐ Follow</button>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </section>
+    </div>
+    <script>
+        // script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const likeButtons = document.querySelectorAll('.like-btn');
+    const followButtons = document.querySelectorAll('.follow-btn');
+
+    likeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('You liked this trend!');
+        });
+    });
+
+    followButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('You followed this trend!');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
+
