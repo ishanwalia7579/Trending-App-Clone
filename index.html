@@ -3,190 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trending App Clone</title>
+    <title>Trending App</title>
     <style>
-        /* style.css */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
 
-.app-container {
-    max-width: 100%; /* Make it fit the phone screen */
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 0; /* No rounded corners for full screen */
-    overflow: hidden;
-    height: 100vh; /* Fit viewport height */
-    display: flex;
-    flex-direction: column;
-}
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Header Styling */
-.app-header {
-    background-color: #6200ea;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-}
+        .app-header {
+            background-color: #6200ea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: relative;
+        }
 
-/* Trending Feed */
-.trending-feed {
-    padding: 10px;
-    overflow-y: scroll; /* Enable scrolling for feed */
-    flex: 1; /* Allow feed to take remaining space */
-}
+        #dark-mode-toggle {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: white;
+            cursor: pointer;
+        }
 
-.trend-card {
-    background: #fff;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 10px;
-}
+        .search-bar {
+            padding: 10px;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.trend-card img {
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    height: auto; /* Ensure proper scaling */
-}
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-.trend-card h2 {
-    color: #333;
-    margin: 10px 0;
-    font-size: 1.2em;
-}
+        .trending-feed {
+            padding: 20px;
+            overflow-y: scroll;
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
 
-.trend-card p {
-    color: #777;
-    font-size: 0.9em;
-}
+        .trend-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+            width: calc(33.33% - 20px);
+            box-sizing: border-box;
+        }
 
-.actions {
-    margin-top: 10px;
-}
+        .trend-card img {
+            width: 100%;
+            height: auto;
+        }
 
-.actions button {
-    padding: 10px 15px;
-    margin: 5px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        .trend-card h2 {
+            color: #333;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
 
-.like-btn {
-    background-color: #00c853;
-    color: white;
-}
+        .trend-card p {
+            color: #777;
+            font-size: 0.9em;
+        }
 
-.follow-btn {
-    background-color: #03a9f4;
-    color: white;
-}
+        .actions button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-.like-btn:hover {
-    background-color: #00a743;
-}
+        .like-btn {
+            background-color: #00c853;
+            color: white;
+        }
 
-.follow-btn:hover {
-    background-color: #0288d1;
-}
+        .follow-btn {
+            background-color: #03a9f4;
+            color: white;
+        }
 
-/* Responsive Design for Phones */
-@media (max-width: 768px) {
-    .trend-card {
-        margin-bottom: 10px;
-    }
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #6200ea;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-    .trend-card h2 {
-        font-size: 1em;
-    }
+        .bottom-nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
 
-    .trend-card p {
-        font-size: 0.8em;
-    }
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
 
-    .actions button {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
+        .dark-mode .app-header {
+            background-color: #1f1f1f;
+        }
 
-    .app-header {
-        font-size: 1.2em;
-        padding: 10px;
-    }
-}
+        .dark-mode .trend-card {
+            background-color: #232323;
+            border-color: #333;
+        }
 
-    </style>
-</head>
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .trend-card {
+                width: 100%;
+            }
+
+            .bottom-nav {
+                flex-direction: column;
+                padding: 5px;
+            }
+
+            .bottom-nav button {
+                margin: 5px 0;
+                font-size: 1em;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .trend-card {
+                width: calc(33.33% - 20px);
+            }
+
+            .trending-feed {
+                padding: 20px;
+            }
+
+            .search-bar input {
+                font-size: 1.2em;
+            }
+        }
+   
+       </style>
+       </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
         <header class="app-header">
-            <h1>Trending App</h1>
+            <span>Trending App</span>
+            <button id="dark-mode-toggle">🌙</button>
         </header>
-
-        <!-- Trending Feed -->
-        <section class="trending-feed">
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search trends...">
+        </div>
+        <div class="trending-feed" id="feed">
             <div class="trend-card">
-                <img src="ISHAN2.jpg" alt="Trend Image">
+                <img src="ISHAN1.jpg" width="200px" alt="Trend">
                 <h2>#TrendingTopic1</h2>
-                <p>Description of the trending topic goes here.</p>
+                <p>Some quick example text about the trend.</p>
                 <div class="actions">
-                    <button class="like-btn">👍 Like</button>
-                    <button class="follow-btn">⭐ Follow</button>
+                    <button class="like-btn">👍 Like (<span class="like-count">0</span>)</button>
+                    <button class="follow-btn">⭐ Follow (<span class="follow-count">0</span>)</button>
                 </div>
             </div>
-            <section class="trending-feed">
-                <div class="trend-card">
-                    <img src="ISHAN1.jpg" alt="Trend Image">
-                    <h2>#TrendingTopic1</h2>
-                    <p>Description of the trending topic goes here.</p>
-                    <div class="actions">
-                        <button class="like-btn">👍 Like</button>
-                        <button class="follow-btn">⭐ Follow</button>
-                    </div>
-                </div>
+        </div>
+        <div class="trending-feed" id="feed">
             <div class="trend-card">
-                <img src="ISHAN3.jpg" alt="Trend Image">
-                <h2>#TrendingTopic2</h2>
-                <p>Description of the trending topic goes here.</p>
+                <img src="ISHAN2.jpg" width="200px" alt="Trend">
+                <h2>#TrendingTopic1</h2>
+                <p>Some quick example text about the trend.</p>
                 <div class="actions">
-                    <button class="like-btn">👍 Like</button>
-                    <button class="follow-btn">⭐ Follow</button>
+                    <button class="like-btn">👍 Like (<span class="like-count">0</span>)</button>
+                    <button class="follow-btn">⭐ Follow (<span class="follow-count">0</span>)</button>
                 </div>
             </div>
-            <!-- Add more cards as needed -->
-        </section>
+        </div>
+        <div class="trending-feed" id="feed">
+            <div class="trend-card">
+                <img src="ISHAN3.jpg" width="250px" alt="Trend">
+                <h2>#TrendingTopic1</h2>
+                <p>Some quick example text about the trend.</p>
+                <div class="actions">
+                    <button class="like-btn">👍 Like (<span class="like-count">0</span>)</button>
+                    <button class="follow-btn">⭐ Follow (<span class="follow-count">0</span>)</button>
+                </div>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <button>🏠 Home</button>
+            <button>🔍 Search</button>
+            <button>👤 Profile</button>
+        </nav>
     </div>
     <script>
-        // script.js
-
-document.addEventListener('DOMContentLoaded', () => {
-    const likeButtons = document.querySelectorAll('.like-btn');
-    const followButtons = document.querySelectorAll('.follow-btn');
-
-    likeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            alert('You liked this trend!');
+        // JavaScript
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
-    });
 
-    followButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            alert('You followed this trend!');
+        const likeButtons = document.querySelectorAll('.like-btn');
+        likeButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                const count = e.target.querySelector('.like-count');
+                count.textContent = parseInt(count.textContent) + 1;
+            });
         });
-    });
-});
 
+        const followButtons = document.querySelectorAll('.follow-btn');
+        followButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                const count = e.target.querySelector('.follow-count');
+                count.textContent = parseInt(count.textContent) + 1;
+            });
+        });
+
+        document.getElementById('search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.trend-card').forEach((card) => {
+                const title = card.querySelector('h2').textContent.toLowerCase();
+                card.style.display = title.includes(query) ? 'block' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
-
