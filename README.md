@@ -1,4 +1,6 @@
 # Trending App
+<p align="center">
+<img src="images.jpg"></p>
 
 A modern, responsive web app designed to showcase trending topics with interactive features such as liking, following, and real-time trend updates. The app is fully responsive, ensuring a smooth user experience on both mobile and desktop screens. It also includes a dark mode toggle for comfort during night usage.
 
